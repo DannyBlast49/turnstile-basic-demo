@@ -1,9 +1,9 @@
 export default async function handler(req, res) {
   console.log('This is running');
   console.log(req.body['cf-turnstile-response']);
-  console.log(req.headers);
-  console.log(req.headers['cf-connecting-ip']);
-  console.log(req.headers['CF-Connecting-IP']);
+  for (const property in req.headers) {
+    console.log(`${property}: ${req.headers[property]}`);
+  }
   const token = req.body['cf-turnstile-response'];
 
   let formData = new FormData();
