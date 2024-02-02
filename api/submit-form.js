@@ -13,9 +13,6 @@ export default async function handler(req, res) {
   try {
     const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
       body: formData,
     });
     const outcome = await response.json();
