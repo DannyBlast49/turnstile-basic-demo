@@ -1,16 +1,9 @@
-import { useEffect } from 'react';
+import react from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
-
-  const [isVerified, setIsVerified] = useState(false);
-
-  useEffect(() => {
-    console.log(event.target.elements[0].value);
-  }, []);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
