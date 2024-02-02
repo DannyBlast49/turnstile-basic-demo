@@ -16,7 +16,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-          <form method='POST' action='http://localhost:3001/submit-form'>
+          <form method='POST' action='/submit-form'>
             <div className="cf-turnstile" data-sitekey="0x4AAAAAAAQtaqkzb37bPwqt" data-theme="light"></div>
             <button type="submit">Search</button>
           </form>
