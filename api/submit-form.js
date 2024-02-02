@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   const token = req.body['cf-turnstile-response'];
 
   let formData = new FormData();
-	formData.append('secret', SECRET_KEY);
+	formData.append('secret', process.env.TURNSTILE_SECRET_KEY);
 	formData.append('response', token);
 
   try {
