@@ -1,20 +1,23 @@
 export default async function handler(req, res) {
   console.log('This is running');
   console.log(req.body['cf-turnstile-response']);
-  console.log(request.headers.get('CF-Connecting-IP'));
+  console.log(req.headers.get('CF-Connecting-IP'));
   const token = req.body['cf-turnstile-response'];
+
+  let formData = new FormData();
+	formData.append('secret', SECRET_KEY);
+	formData.append('response', token);
+
   try {
     const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        secret: process.env.TURNSTILE_SECRET_KEY,
-        response: token,
-      }),
+      body: formData,
     });
-    if (response.data.success) {
+    const outcome = await response.json();
+    if (outcome.success) {
       res.send({ verified: true });
       res.send({ message: 'Captcha verification successful' });
     } else {
