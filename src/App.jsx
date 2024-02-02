@@ -2,6 +2,19 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const response = await fetch('https://turnstile-basic-demo.vercel.app/api/submit-form', {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await response.json();
+
+    console.log(data);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -17,7 +30,7 @@ function App() {
         >
           Learn React
         </a>
-        <form method='POST' action='https://turnstile-basic-demo.vercel.app/api/submit-form'>
+        <form onSubmit={handleSubmit}>
           <div className="cf-turnstile" data-sitekey="0x4AAAAAAAQtaqkzb37bPwqt" data-theme="light"></div>
           <button type="submit">Search</button>
         </form>
