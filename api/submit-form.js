@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
   console.log('This is running');
   console.log(req.body['cf-turnstile-response']);
-  console.log(req.headers['CF-Connecting-IP']);
+  console.log(request.headers.get('CF-Connecting-IP'));
   const token = req.body['cf-turnstile-response'];
   try {
     const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
