@@ -16,7 +16,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-          <form method='POST' action={window.location.origin + '/submit-form'}>
+          <form method='POST' action='https://turnstile-basic-demo.vercel.app/submit-form'>
             <div className="cf-turnstile" data-sitekey="0x4AAAAAAAQtaqkzb37bPwqt" data-theme="light"></div>
             <button type="submit">Search</button>
           </form>
