@@ -17,11 +17,9 @@ export default async function handler(req, res) {
     });
     const outcome = await response.json();
     if (outcome.success) {
-      res.send({ verified: true });
-      res.send({ message: 'Captcha verification successful' });
+      res.send({ verified: true, message: 'Captcha verification successful' });
     } else {
-      res.send({ verified: false });
-      res.send({ error: 'Captcha verification failed' });
+      res.send({ verified: false, error: 'Captcha verification failed' });
     }
   } catch (error) {
     res.status(500).send({ error: 'Server error verifying captcha' });
