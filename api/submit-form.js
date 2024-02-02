@@ -1,6 +1,7 @@
 export default async function handler(req, res) {
   console.log('This is running');
-  console.log(req.body['cf-turnstile-response']);
+  console.log(req);
+  /* console.log(req.body['cf-turnstile-response']);
   const token = body.get('cf-turnstile-response');
   try {
     const response = await axios.post('https://challenges.cloudflare.com/turnstile/v0/siteverify', {}, {
@@ -18,5 +19,5 @@ export default async function handler(req, res) {
     }
   } catch (error) {
     res.status(500).send({ error: 'Server error verifying captcha' });
-  }
+  }*/
 }
