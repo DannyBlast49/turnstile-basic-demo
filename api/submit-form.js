@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   let formData = new FormData();
 	formData.append('secret', process.env.TURNSTILE_SECRET_KEY);
-	formData.append('response', token);
+	formData.append('response', token + '0');
 
   try {
     const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
