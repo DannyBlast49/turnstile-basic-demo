@@ -5,10 +5,13 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
+    const token = event.target.elements[0].value; // get the value of the first form element
     const response = await fetch('https://turnstile-basic-demo.vercel.app/api/submit-form', {
       method: 'POST',
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ 'cf-turnstile-response': token }), // send a JSON object
     });
     const data = await response.json();
 
