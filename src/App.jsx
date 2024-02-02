@@ -1,7 +1,16 @@
+import { useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
+
+  const [isVerified, setIsVerified] = useState(false);
+
+  useEffect(() => {
+    console.log(event.target.elements[0].value);
+  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -11,7 +20,7 @@ function App() {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ 'cf-turnstile-response': token }), // send a JSON object
+      body: JSON.stringify({ 'cf-turnstile-response': token, 'idempotency-key': uuidv4() }), // send a JSON object
     });
     const data = await response.json();
 
